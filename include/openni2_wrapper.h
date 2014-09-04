@@ -36,7 +36,6 @@ class OpenNI2Wrapper {
 
   openni::Device device_;
   openni::DeviceInfo device_info_;
-
   openni::VideoStream depth_video_stream_;
 
   OpenNI2FrameListener* frame_listner_;
