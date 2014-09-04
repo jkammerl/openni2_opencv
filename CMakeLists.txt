@@ -14,6 +14,8 @@ include_directories(include
 
 link_directories(${PC_OPENNI2_LIBRARY_DIRS})
 
-add_executable(openni2_opencv src/openni2_opencv.cpp)
+add_executable(openni2_opencv src/main.cpp
+                              src/openni2_wrapper.cpp
+                              src/openni2_frame_listener.cpp)
 target_link_libraries(openni2_opencv ${PC_OPENNI2_LIBRARIES})
 
