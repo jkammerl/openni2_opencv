@@ -18,6 +18,7 @@ class OpenNI2Wrapper {
   void SetFrameListener(OpenNI2FrameListener* frame_listner);
 
   void StartDepthStream();
+  void StartDepthStream(int width, int height);
 
   void StopDepthStream();
 
@@ -33,6 +34,8 @@ class OpenNI2Wrapper {
   float GetDepthFocalLength(int frame_height) const;
 
   void SetImageRegistrationMode(bool enabled);
+
+  void SetDepthResolution(int width, int height);
 
   openni::Device device_;
   openni::DeviceInfo device_info_;

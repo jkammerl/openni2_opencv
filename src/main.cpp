@@ -8,7 +8,7 @@ int main(int argc, char **argv){
 
   openni_wrapper.SetFrameListener(&frame_listener);
 
-  openni_wrapper.StartDepthStream();
+  openni_wrapper.StartDepthStream(640, 480);
 
   while (true) {
     sleep(100);

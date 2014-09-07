@@ -101,6 +101,11 @@ void OpenNI2Wrapper::SetImageRegistrationMode(bool enabled) {
   }
 }
 
+void OpenNI2Wrapper::StartDepthStream(int width, int height) {
+  SetDepthResolution(width, height);
+  StartDepthStream();
+}
+
 void OpenNI2Wrapper::StartDepthStream() {
   if (frame_listner_ != 0) {
     depth_video_stream_.setMirroringEnabled(false);
@@ -116,4 +121,13 @@ void OpenNI2Wrapper::StopDepthStream() {
   depth_video_stream_.stop();
 }
 
+void OpenNI2Wrapper::SetDepthResolution(int width, int height) {
+  openni::VideoMode video_mode = depth_video_stream_.getVideoMode();
+  video_mode.setResolution(width, height);
+  const openni::Status rc = depth_video_stream_.setVideoMode(video_mode);
+  if (rc != openni::STATUS_OK) {
+    std::cerr << "Couldn't set IR video mode: "
+        << string(openni::OpenNI::getExtendedError()) << std::endl;
+  }
+}
 
